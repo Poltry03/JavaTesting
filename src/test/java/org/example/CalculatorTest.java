@@ -48,7 +48,7 @@ class CalculatorTest {
     @Test
     void testWithNeg(){
         try {
-            int n = Calculator.Add("1,-2,-3");
+            Calculator.Add("1,-2,-3");
             fail("Dovrebbe lanciare un'errore");
         } catch (Exception e){
             System.out.println(e);
