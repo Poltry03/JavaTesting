@@ -55,4 +55,10 @@ class CalculatorTest {
         }
     }
 
+    @Test
+    void testHighNum(){
+        int n = Calculator.Add("1,2,3000");
+        assertEquals(3, n);
+    }
+
 }
