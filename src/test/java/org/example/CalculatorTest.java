@@ -1,6 +1,5 @@
 package org.example;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,13 +10,13 @@ class CalculatorTest {
     void test(){
         int n;
 
-        n = Calculator.calculator("0");
+        n = Calculator.Add("0");
         assertEquals(0, n);
 
-        n = Calculator.calculator("");
+        n = Calculator.Add("");
         assertEquals(0, n);
 
-        n = Calculator.calculator("2");
+        n = Calculator.Add("2");
         assertEquals(2, n);
     }
 
@@ -26,9 +25,34 @@ class CalculatorTest {
 
         int n;
 
-        n = Calculator.calculator("1,2");
+        n = Calculator.Add("1,2");
         assertEquals(3, n);
+    }
 
+    @Test
+    void testSumThreeOrMore(){
+
+        int n = Calculator.Add("1,2,3");
+        assertEquals(6, n);
+
+        n = Calculator.Add("1\n2,3");
+        assertEquals(6, n);
+    }
+
+    @Test
+    void testWithRegex(){
+        int n = Calculator.Add("//;\n1;2");
+        assertEquals(3, n);
+    }
+
+    @Test
+    void testWithNeg(){
+        try {
+            int n = Calculator.Add("1,-2,-3");
+            fail("Dovrebbe lanciare un'errore");
+        } catch (Exception e){
+            System.out.println(e);
+        }
     }
 
 }
