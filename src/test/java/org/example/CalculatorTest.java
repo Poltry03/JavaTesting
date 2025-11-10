@@ -61,4 +61,16 @@ class CalculatorTest {
         assertEquals(3, n);
     }
 
+    @Test
+    void testLongRegex(){
+        int n = Calculator.Add("//[++]\n1++2++3");
+        assertEquals(6, n);
+    }
+
+    @Test
+    void testManyLongRegex(){
+        int n = Calculator.Add("//[++][;;]\n1;;2++3++4");
+        assertEquals(10, n);
+    }
+
 }
